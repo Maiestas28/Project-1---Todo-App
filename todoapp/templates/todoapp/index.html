@@ -1,0 +1,35 @@
+{% extends 'todoapp/base.html' %}
+
+<html>
+  <head>
+
+  </head>
+  <body>
+ {% block body %}
+<div class="container">
+  <h2>Today's List</h2>
+  <p>Let's get things done!</p>
+<table class="table table-dark">
+  <tbody>
+    <tr>
+      <td scope="col"><b>TASK NAME</b></td>
+      <td scope="col"><b>TASK PRIORITY</b></td>
+      <td scope="col"><b>ACTION</b></td>
+    </tr>
+    {% if object_list %}
+    {% for task in object_list %}
+    <tr class='active'>
+      <td><a href="{% url 'todoapp:detail' task.id %}">{{task.task_name}}</a></td>
+      <td><b>{{task.task_priority}}</b></td>
+      <td><button type="submit" class='btn btn-success'>Done</button></td>
+    </tr>
+
+      {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+  </div>
+
+  {% endblock %}
+  </body>
+  </html>
